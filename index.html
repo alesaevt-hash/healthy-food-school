@@ -9,794 +9,899 @@
 
 <style>
 :root {
-  --green: #16865b;
-  --dark: #10533c;
-  --light: #eaf8ef;
-  --orange: #ffbd69;
-  --text: #20332a;
-  --white: #fff;
+  --green:#16865b;
+  --dark:#10533c;
+  --light:#eaf8ef;
+  --orange:#f4a340;
+  --text:#26352d;
+  --white:#fff;
+  --shadow:0 8px 28px rgba(0,0,0,.08);
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--text);
-  background: #f8fcf8;
-  line-height: 1.6;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  color:var(--text);
+  background:#f7fbf8;
+  line-height:1.6;
 }
-a { color: inherit; text-decoration: none; }
-button, input, textarea { font: inherit; }
-button { cursor: pointer; }
-header {
-  background: white;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  box-shadow: 0 2px 14px #1232;
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+header{
+  position:sticky;top:0;z-index:20;
+  background:white;
+  box-shadow:0 2px 15px rgba(0,0,0,.07);
 }
-.nav {
-  max-width: 1180px;
-  margin: auto;
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+.nav{
+  max-width:1150px;margin:auto;padding:12px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:15px;flex-wrap:wrap;
 }
-.brand { display: flex; align-items: center; gap: 12px; }
-.logo {
-  width: 58px; height: 58px;
-  border-radius: 16px;
-  background: var(--light);
-  object-fit: cover;
-  display: grid;
-  place-items: center;
-  font-size: 29px;
-  overflow: hidden;
-  flex-shrink: 0;
+.brand{display:flex;align-items:center;gap:12px;font-weight:bold;color:var(--dark)}
+.brand img{
+  width:48px;height:48px;object-fit:contain;
+  border-radius:12px;background:var(--light);
 }
-.logo img { width: 100%; height: 100%; object-fit: cover; }
-.brand-title { font-weight: 800; color: var(--dark); line-height: 1.25; }
-.brand-title small { display: block; font-size: 12px; font-weight: 500; color: #62776b; margin-top: 4px; }
-nav { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
-nav a { font-size: 14px; font-weight: 700; }
-nav a:hover { color: var(--green); }
-.hero {
-  background: linear-gradient(120deg, #10533c, #16865b 65%, #58b981);
-  color: white;
-  padding: 78px 20px;
+nav{display:flex;gap:17px;flex-wrap:wrap;align-items:center}
+nav a{color:var(--dark);text-decoration:none;font-weight:600;font-size:14px}
+nav a:hover{color:var(--green)}
+.admin-open,.primary{
+  border:0;background:var(--green);color:white;
+  border-radius:10px;padding:11px 17px;font-weight:bold;
 }
-.hero-inner {
-  max-width: 1180px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1.15fr .85fr;
-  align-items: center;
-  gap: 42px;
+.admin-open:hover,.primary:hover{background:var(--dark)}
+.hero{
+  min-height:480px;display:flex;align-items:center;
+  background:linear-gradient(90deg,rgba(7,48,31,.83),rgba(7,48,31,.25)),
+  url("https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1800&q=85") center/cover;
+  color:white;padding:65px 20px;
 }
-.eyebrow {
-  display: inline-block;
-  background: #ffffff20;
-  border: 1px solid #ffffff55;
-  padding: 7px 14px;
-  border-radius: 30px;
-  font-size: 13px;
+.hero-inner{max-width:1150px;width:100%;margin:auto}
+.hero h1{font-size:clamp(34px,6vw,62px);line-height:1.1;max-width:700px;margin:0 0 20px}
+.hero p{font-size:20px;max-width:600px}
+.hero .primary{background:var(--orange);color:#26352d;margin-top:15px}
+.container{max-width:1150px;margin:auto;padding:55px 20px}
+.section-title{text-align:center;margin:0 0 12px;color:var(--dark);font-size:32px}
+.section-sub{text-align:center;color:#68766d;margin:0 auto 32px;max-width:650px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.card{
+  background:white;border-radius:17px;padding:23px;
+  box-shadow:var(--shadow);
 }
-h1 { font-size: clamp(34px, 5vw, 58px); line-height: 1.08; margin: 20px 0; }
-.hero p { font-size: 18px; max-width: 620px; color: #e5f7ec; }
-.hero-image {
-  width: 100%;
-  height: 360px;
-  object-fit: cover;
-  border-radius: 28px;
-  box-shadow: 0 20px 50px #0003;
+.card h3{color:var(--dark);margin-top:0}
+.emoji{font-size:35px}
+.teacher{
+  display:grid;grid-template-columns:260px 1fr;gap:30px;
+  align-items:center;background:white;border-radius:20px;
+  padding:25px;box-shadow:var(--shadow);
 }
-.btn {
-  border: 0;
-  display: inline-block;
-  padding: 12px 19px;
-  border-radius: 12px;
-  font-weight: 800;
-  background: var(--orange);
-  color: #453015;
-  margin: 8px 8px 0 0;
+.teacher img{width:100%;height:260px;object-fit:cover;border-radius:15px}
+.teacher h3{color:var(--dark);font-size:24px;margin-bottom:5px}
+.activity-card{overflow:hidden;padding:0}
+.activity-card img{width:100%;height:190px;object-fit:cover}
+.activity-card div{padding:20px}
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px;
 }
-.btn.green { background: var(--green); color: white; }
-.btn.white { background: white; color: var(--dark); }
-section { padding: 68px 20px; scroll-margin-top: 90px; }
-.container { max-width: 1180px; margin: auto; }
-.section-head { text-align: center; max-width: 720px; margin: 0 auto 35px; }
-.section-head h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.2; color: var(--dark); margin: 0 0 12px; }
-.section-head p { color: #66776d; margin: 0; }
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.card {
-  background: white;
-  border: 1px solid #e3eee5;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 7px 24px #123207;
+.gallery-item{position:relative;overflow:hidden;border-radius:14px;background:#e7eee9}
+.gallery-item img{width:100%;height:220px;object-fit:cover;display:block;transition:.3s}
+.gallery-item:hover img{transform:scale(1.04)}
+.gallery-caption{padding:10px 12px;background:white;font-size:14px}
+.news-item{background:white;padding:20px;border-radius:14px;box-shadow:var(--shadow)}
+.news-item h3{margin:0 0 8px;color:var(--dark)}
+.news-date{font-size:12px;color:#7a887f;margin-bottom:8px}
+.tips .card{border-left:5px solid var(--green)}
+footer{background:var(--dark);color:white;padding:35px 20px;text-align:center}
+footer p{margin:6px}
+.modal{
+  display:none;position:fixed;inset:0;z-index:100;
+  background:rgba(0,0,0,.65);padding:15px;overflow:auto;
 }
-.card-body { padding: 22px; }
-.card h3 { color: var(--dark); margin: 0 0 10px; }
-.card p { color: #65756b; margin: 0; }
-.card-image { width: 100%; height: 215px; object-fit: cover; display: block; }
-.icon { font-size: 36px; margin-bottom: 10px; }
-.soft { background: var(--light); }
-.teacher {
-  display: grid;
-  grid-template-columns: .8fr 1.2fr;
-  align-items: center;
-  gap: 40px;
-  background: white;
-  border-radius: 26px;
-  overflow: hidden;
-  border: 1px solid #e1eee4;
+.modal.show{display:flex;align-items:flex-start;justify-content:center}
+.modal-box{
+  background:white;width:100%;max-width:720px;margin:25px auto;
+  border-radius:18px;padding:25px;position:relative;
 }
-.teacher img { width: 100%; height: 360px; object-fit: cover; }
-.teacher-copy { padding: 30px; }
-.teacher-copy h2 { color: var(--dark); line-height: 1.2; }
-.pill {
-  display: inline-block;
-  background: var(--light);
-  color: var(--dark);
-  padding: 6px 11px;
-  border-radius: 30px;
-  font-size: 13px;
-  font-weight: 700;
+.modal-box h2{color:var(--dark);margin-top:0}
+.close{
+  position:absolute;right:15px;top:12px;border:0;
+  background:#edf3ef;border-radius:50%;width:36px;height:36px;font-size:22px;
 }
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+.field{margin:14px 0}
+.field label{display:block;font-weight:bold;margin-bottom:6px}
+.field input,.field textarea{
+  width:100%;padding:12px;border:1px solid #cbd8ce;
+  border-radius:9px;background:white;
 }
-.gallery-item {
-  position: relative;
-  min-height: 210px;
-  border-radius: 17px;
-  overflow: hidden;
-  background: #e2eee5;
+.field textarea{min-height:90px;resize:vertical}
+.admin-section{border-top:1px solid #e1e9e3;padding-top:18px;margin-top:20px}
+.admin-section h3{color:var(--dark)}
+.admin-list{display:grid;gap:9px;margin-top:12px}
+.admin-row{
+  background:#f2f7f3;padding:12px;border-radius:10px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
 }
-.gallery-item img { width: 100%; height: 100%; min-height: 210px; object-fit: cover; display: block; }
-.gallery-item .caption {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  color: white;
-  padding: 30px 15px 14px;
-  background: linear-gradient(transparent, #000b);
-  font-weight: 700;
-}
-.tips { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-.tip { padding: 19px; background: white; border-radius: 16px; border: 1px solid #dfede2; }
-.tip strong { display: block; color: var(--dark); margin-bottom: 5px; }
-.news-item { padding: 20px; border-bottom: 1px solid #e1eee4; }
-.news-item:last-child { border-bottom: 0; }
-.news-item time { color: var(--green); font-size: 13px; font-weight: 800; }
-.news-item h3 { margin: 6px 0; }
-.contact {
-  background: var(--dark);
-  color: white;
-}
-.contact .section-head h2 { color: white; }
-.contact .section-head p { color: #d3ebdc; }
-.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.contact-card { background: #ffffff12; border: 1px solid #ffffff28; padding: 22px; border-radius: 18px; }
-.contact-card h3 { margin-top: 0; }
-footer { background: #0b3929; color: #d6e9dd; text-align: center; padding: 22px; font-size: 13px; }
-.admin-entry {
-  border: 1px solid #ffffff66; color: white; background: transparent;
-  border-radius: 9px; padding: 7px 11px; font-size: 12px;
-}
-.modal {
-  display: none; position: fixed; inset: 0; z-index: 50;
-  background: #061b13b8; padding: 20px; overflow-y: auto;
-  align-items: center; justify-content: center;
-}
-.modal.show { display: flex; }
-.modal-box {
-  width: 100%; max-width: 720px; background: white;
-  border-radius: 22px; padding: 25px; max-height: 90vh; overflow-y: auto;
-}
-.modal-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.modal-top h2 { margin: 0; color: var(--dark); }
-.close { border: 0; background: #edf5ef; border-radius: 9px; padding: 8px 12px; }
-.field { display: block; margin: 13px 0; font-weight: 700; font-size: 14px; }
-.field input, .field textarea {
-  display: block; width: 100%; margin-top: 6px;
-  border: 1px solid #cadbce; border-radius: 10px; padding: 11px;
-  background: white; color: var(--text);
-}
-.field textarea { min-height: 85px; resize: vertical; }
-.admin-panel { display: none; }
-.admin-panel.active { display: block; }
-.admin-section { padding: 15px 0; border-bottom: 1px solid #e2eee4; }
-.admin-section h3 { color: var(--dark); margin: 0 0 8px; }
-.small { color: #68796e; font-size: 13px; }
-.admin-list { display: grid; gap: 8px; margin-top: 12px; }
-.admin-row { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 10px; background: #f1f8f2; border-radius: 10px; }
-.delete { background: #ffe9e7; color: #9d2e28; border: 0; padding: 7px 10px; border-radius: 8px; }
-#loginError { color: #b42318; font-size: 13px; }
-@media (max-width: 800px) {
-  .hero-inner, .teacher { grid-template-columns: 1fr; }
-  .hero { padding: 48px 20px; }
-  .hero-image { height: 260px; }
-  .cards, .contact-grid { grid-template-columns: 1fr 1fr; }
-  .gallery { grid-template-columns: 1fr 1fr; }
-  nav { gap: 10px; }
-  nav a { font-size: 12px; }
-}
-@media (max-width: 520px) {
-  .nav { align-items: flex-start; flex-direction: column; }
-  nav { width: 100%; }
-  .cards, .contact-grid, .gallery, .tips { grid-template-columns: 1fr; }
-  section { padding: 48px 16px; }
-  .teacher img { height: 250px; }
-  .modal-box { padding: 17px; }
+.admin-row img{width:55px;height:55px;object-fit:cover;border-radius:8px}
+.danger{border:0;background:#d94a4a;color:white;border-radius:8px;padding:8px 12px}
+.secondary{border:0;background:#e5f2e9;color:var(--dark);border-radius:8px;padding:10px 14px;font-weight:bold}
+.status{padding:10px;border-radius:9px;background:#edf6ef;margin:12px 0;font-size:14px}
+.status.error{background:#fff0f0;color:#a22}
+.hidden{display:none!important}
+.small{font-size:13px;color:#718078}
+@media(max-width:700px){
+  .nav{justify-content:center}
+  nav{justify-content:center}
+  .hero{min-height:420px}
+  .teacher{grid-template-columns:1fr}
+  .teacher img{height:230px}
+  .container{padding:40px 16px}
+  .section-title{font-size:27px}
 }
 </style>
 </head>
 
 <body>
+
 <header>
   <div class="nav">
-    <a class="brand" href="#home">
-      <div class="logo" id="logoBox">🥗</div>
-      <div class="brand-title">
-        Школа здорового питания
-        <small>Полезные привычки — здоровое будущее</small>
-      </div>
-    </a>
+    <div class="brand">
+      <img id="siteLogo" src="https://cdn-icons-png.flaticon.com/512/3050/3050158.png" alt="Логотип">
+      <span>Школа здорового питания</span>
+    </div>
     <nav>
       <a href="#about">О школе</a>
       <a href="#teacher">Педагог</a>
       <a href="#activities">Мероприятия</a>
       <a href="#gallery">Галерея</a>
       <a href="#tips">Советы</a>
-      <button class="admin-entry" onclick="openAdmin()">Администратор</button>
+      <a href="#news">Новости</a>
     </nav>
+    <button class="admin-open" onclick="openAdmin()">Администратор</button>
   </div>
 </header>
 
-<main>
-  <section class="hero" id="home">
-    <div class="hero-inner">
-      <div>
-        <span class="eyebrow">🌿 Здоровье начинается с привычек</span>
-        <h1>Питаемся правильно — живём ярко!</h1>
-        <p>Школа здорового питания помогает узнавать больше о полезных продуктах, разнообразном рационе и ежедневных привычках, которые поддерживают хорошее самочувствие.</p>
-        <a href="#about" class="btn">Узнать о проекте</a>
-        <a href="#tips" class="btn white">Полезные советы</a>
-      </div>
-      <img class="hero-image" src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1000&q=85" alt="Разнообразная полезная еда">
-    </div>
-  </section>
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <h1>Питаемся правильно — живём ярко!</h1>
+    <p>Добро пожаловать на сайт Школы здорового питания. Здесь мы учимся выбирать полезные продукты, формировать хорошие привычки и заботиться о своём здоровье.</p>
+    <a href="#about"><button class="primary">Узнать больше</button></a>
+  </div>
+</section>
 
-  <section id="about">
-    <div class="container">
-      <div class="section-head">
-        <h2>О нашей школе</h2>
-        <p>Формируем культуру питания через знания, творчество и совместные активности.</p>
-      </div>
-      <div class="cards">
-        <article class="card"><div class="card-body">
-          <div class="icon">🥦</div><h3>Знания о питании</h3>
-          <p>Знакомимся с разными продуктами, разнообразием рациона и значением регулярного питания.</p>
-        </div></article>
-        <article class="card"><div class="card-body">
-          <div class="icon">🍎</div><h3>Полезные привычки</h3>
-          <p>Обсуждаем питьевой режим, овощи и фрукты, режим дня и осознанный выбор еды.</p>
-        </div></article>
-        <article class="card"><div class="card-body">
-          <div class="icon">🤝</div><h3>Вместе интереснее</h3>
-          <p>Проводим познавательные встречи, тематические занятия и школьные мероприятия.</p>
-        </div></article>
-      </div>
+<section class="container" id="about">
+  <h2 class="section-title">О нашей школе</h2>
+  <p class="section-sub">Здоровое питание начинается с простых знаний и ежедневных привычек.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="emoji">🥗</div>
+      <h3>Знания о питании</h3>
+      <p>Узнаём, какие продукты помогают организму расти, развиваться и оставаться активным.</p>
     </div>
-  </section>
+    <div class="card">
+      <div class="emoji">🍎</div>
+      <h3>Полезные привычки</h3>
+      <p>Учимся правильно питаться, пить достаточно воды и соблюдать режим дня.</p>
+    </div>
+    <div class="card">
+      <div class="emoji">🤝</div>
+      <h3>Вместе интереснее</h3>
+      <p>Проводим занятия, викторины, конкурсы и мероприятия для школьников.</p>
+    </div>
+  </div>
+</section>
 
-  <section class="soft" id="teacher">
-    <div class="container">
-      <div class="teacher">
-        <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=900&q=80" alt="Образовательное занятие">
-        <div class="teacher-copy">
-          <span class="pill">Наш педагог</span>
-          <h2>Абдухаитова Индира Кайролаевна</h2>
-          <p>Руководитель школы здорового питания. Проект объединяет образовательные занятия, творческие идеи и интерес к здоровым повседневным привычкам.</p>
-          <p><strong>Место реализации:</strong> школа-гимназия № 80 имени С. Сейфуллина, Астана.</p>
-          <p class="small">Информация и фотографии этого раздела могут быть изменены администратором сайта.</p>
-        </div>
-      </div>
+<section class="container" id="teacher">
+  <h2 class="section-title">Наш педагог</h2>
+  <p class="section-sub">Человек, который помогает нам узнавать больше о здоровом образе жизни.</p>
+  <div class="teacher">
+    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=700&q=80" alt="Педагог">
+    <div>
+      <h3>Абдухаитова Индира Кайроллаевна</h3>
+      <p><strong>Педагог Школы здорового питания</strong></p>
+      <p>Помогает школьникам формировать культуру правильного питания, узнавать о пользе продуктов и заботиться о своём здоровье.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="activities">
-    <div class="container">
-      <div class="section-head">
-        <h2>Наши направления</h2>
-        <p>Идеи для занятий и школьных мероприятий.</p>
-      </div>
-      <div class="cards">
-        <article class="card">
-          <img class="card-image" src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80" alt="Овощи и зелень">
-          <div class="card-body"><h3>Тарелка разнообразия</h3><p>Узнаём, как сочетать разные группы продуктов и почему разнообразие имеет значение.</p></div>
-        </article>
-        <article class="card">
-          <img class="card-image" src="https://images.unsplash.com/photo-1505576399274-565b52d4ac71?auto=format&fit=crop&w=800&q=80" alt="Свежие фрукты">
-          <div class="card-body"><h3>Фруктовая неделя</h3><p>Знакомимся с фруктами, сезонными продуктами и интересными рецептами.</p></div>
-        </article>
-        <article class="card">
-          <img class="card-image" src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Приготовление еды">
-          <div class="card-body"><h3>Учимся вместе</h3><p>Обсуждаем гигиену на кухне, безопасное обращение с продуктами и простые рецепты.</p></div>
-        </article>
-      </div>
+<section class="container" id="activities">
+  <h2 class="section-title">Наши мероприятия</h2>
+  <p class="section-sub">Учимся полезному через творчество, общение и практику.</p>
+  <div class="grid">
+    <div class="card activity-card">
+      <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=700&q=80" alt="Полезная еда">
+      <div><h3>Уроки здорового питания</h3><p>Изучаем продукты, витамины и основы сбалансированного рациона.</p></div>
     </div>
-  </section>
+    <div class="card activity-card">
+      <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=700&q=80" alt="Командная работа">
+      <div><h3>Викторины и конкурсы</h3><p>Проверяем знания и соревнуемся в командах.</p></div>
+    </div>
+    <div class="card activity-card">
+      <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=700&q=80" alt="Овощи и фрукты">
+      <div><h3>Практические занятия</h3><p>Знакомимся с полезными продуктами и учимся делать правильный выбор.</p></div>
+    </div>
+  </div>
+</section>
 
-  <section class="soft" id="gallery">
-    <div class="container">
-      <div class="section-head">
-        <h2>Фотогалерея</h2>
-        <p>Фотографии полезных продуктов и активности проекта. Администратор может добавить снимки школьных мероприятий.</p>
-      </div>
-      <div class="gallery" id="galleryGrid"></div>
-    </div>
-  </section>
+<section class="container" id="gallery">
+  <h2 class="section-title">Наша галерея</h2>
+  <p class="section-sub">Фотографии занятий, событий и школьной жизни.</p>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
 
-  <section id="tips">
-    <div class="container">
-      <div class="section-head">
-        <h2>Простые советы на каждый день</h2>
-        <p>Небольшие шаги, которые помогают формировать здоровые привычки.</p>
-      </div>
-      <div class="tips">
-        <div class="tip"><strong>💧 Пей воду</strong>Регулярно пей воду в течение дня, ориентируясь на жажду и свои потребности.</div>
-        <div class="tip"><strong>🌈 Выбирай разнообразие</strong>Добавляй в рацион разные овощи, фрукты, крупы и другие подходящие продукты.</div>
-        <div class="tip"><strong>🍽️ Соблюдай режим</strong>Старайся питаться регулярно и не пропускать приёмы пищи из-за занятости.</div>
-        <div class="tip"><strong>🧼 Помни о гигиене</strong>Мой руки перед едой, а овощи и фрукты — перед употреблением.</div>
-        <div class="tip"><strong>😴 Высыпайся</strong>Сон и отдых также важны для самочувствия, внимания и учёбы.</div>
-        <div class="tip"><strong>😊 Без строгих запретов</strong>Здоровое питание — это баланс и разнообразие, а не деление еды на «хорошую» и «плохую».</div>
-      </div>
-    </div>
-  </section>
+<section class="container tips" id="tips">
+  <h2 class="section-title">Полезные советы</h2>
+  <p class="section-sub">Несколько простых правил, которые помогут заботиться о здоровье.</p>
+  <div class="grid">
+    <div class="card"><h3>💧 Пейте воду</h3><p>Не забывайте пить воду в течение дня.</p></div>
+    <div class="card"><h3>🍏 Ешьте фрукты</h3><p>Добавляйте в рацион овощи и фрукты.</p></div>
+    <div class="card"><h3>🍳 Завтракайте</h3><p>Полноценный завтрак помогает начать день.</p></div>
+    <div class="card"><h3>🥦 Разнообразьте питание</h3><p>Старайтесь употреблять разные группы продуктов.</p></div>
+    <div class="card"><h3>🏃 Двигайтесь</h3><p>Физическая активность важна для здоровья.</p></div>
+    <div class="card"><h3>😴 Соблюдайте режим</h3><p>Сон и отдых помогают организму восстанавливаться.</p></div>
+  </div>
+</section>
 
-  <section class="soft" id="news">
-    <div class="container">
-      <div class="section-head">
-        <h2>Новости и события</h2>
-        <p>Здесь будут появляться новости о жизни школы здорового питания.</p>
-      </div>
-      <div class="card" id="newsList"></div>
-    </div>
-  </section>
-
-  <section class="contact" id="contacts">
-    <div class="container">
-      <div class="section-head">
-        <h2>Добро пожаловать в наш проект!</h2>
-        <p>Здоровые привычки начинаются с маленьких шагов и совместных усилий.</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-card"><h3>🏫 Учебное заведение</h3><p>Школа-гимназия № 80 имени С. Сейфуллина</p></div>
-        <div class="contact-card"><h3>📍 Город</h3><p>Астана, Казахстан</p></div>
-        <div class="contact-card"><h3>🌱 Наша цель</h3><p>Распространять знания о разнообразном и сбалансированном питании.</p></div>
-      </div>
-    </div>
-  </section>
-</main>
+<section class="container" id="news">
+  <h2 class="section-title">Новости и объявления</h2>
+  <p class="section-sub">Следите за событиями нашей Школы здорового питания.</p>
+  <div class="grid" id="newsList"></div>
+</section>
 
 <footer>
-  <p>© <span id="year"></span> Школа здорового питания</p>
-  <p>Образовательный проект о полезных привычках и культуре питания.</p>
+  <h2>Школа здорового питания</h2>
+  <p>Школа-гимназия №80 имени С. Сейфуллина</p>
+  <p>г. Астана, Республика Казахстан</p>
+  <p>© 2026 Школа здорового питания</p>
 </footer>
 
-<div class="modal" id="adminModal" role="dialog" aria-modal="true" aria-label="Панель администратора">
+<!-- ПАНЕЛЬ АДМИНИСТРАТОРА -->
+<div class="modal" id="adminModal">
   <div class="modal-box">
-    <div class="modal-top">
-      <h2>⚙️ Администрирование</h2>
-      <button class="close" onclick="closeAdmin()">Закрыть ✕</button>
-    </div>
+    <button class="close" onclick="closeAdmin()">×</button>
+    <h2>Панель администратора</h2>
 
-    <div id="loginPanel">
-      <p>Введите пароль администратора, чтобы редактировать сайт в этом браузере.</p>
+    <div id="loginBlock">
+      <p>Введите пароль администратора.</p>
       <form id="loginForm">
-        <label class="field">Пароль
+        <div class="field">
+          <label for="adminPassword">Пароль</label>
           <input id="adminPassword" type="password" autocomplete="current-password" required>
-        </label>
-        <button class="btn green" type="submit">Войти</button>
-        <p id="loginError"></p>
+        </div>
+        <button class="primary" type="submit">Войти</button>
       </form>
+      <div id="loginError" class="status error hidden"></div>
     </div>
 
-    <div id="adminPanel" class="admin-panel">
-      <p class="small">Изменения сохраняются в текущем браузере. Они не публикуются автоматически для остальных посетителей.</p>
+    <div id="adminPanel" class="hidden">
+      <div class="status" id="cloudStatus">Подключение к облачному хранилищу...</div>
+      <p class="small">Добавленные фотографии и новости сохраняются в общем хранилище Google Drive и должны отображаться на других устройствах.</p>
 
       <div class="admin-section">
-        <h3>Логотип</h3>
-        <label class="field">Выбрать изображение логотипа
-          <input id="logoUpload" type="file" accept="image/*">
-        </label>
+        <h3>Логотип сайта</h3>
+        <div class="field">
+          <input type="file" id="logoUpload" accept="image/*">
+        </div>
+        <button class="secondary" onclick="uploadSpecial('logo')">Загрузить логотип</button>
       </div>
 
       <div class="admin-section">
-        <h3>Главная фотография</h3>
-        <label class="field">Загрузить новое фото
-          <input id="heroUpload" type="file" accept="image/*">
-        </label>
+        <h3>Главное фото сайта</h3>
+        <div class="field">
+          <input type="file" id="heroUpload" accept="image/*">
+        </div>
+        <button class="secondary" onclick="uploadSpecial('hero')">Загрузить главное фото</button>
       </div>
 
       <div class="admin-section">
-        <h3>Фотогалерея</h3>
-        <label class="field">Добавить фотографии
-          <input id="galleryUpload" type="file" accept="image/*" multiple>
-        </label>
-        <label class="field">Подпись к новым фото
-          <input id="galleryCaption" type="text" placeholder="Например: День здорового питания">
-        </label>
-        <div class="admin-list" id="galleryAdminList"></div>
+        <h3>Добавить фотографию в галерею</h3>
+        <div class="field">
+          <label for="galleryUpload">Выберите фотографию</label>
+          <input type="file" id="galleryUpload" accept="image/*">
+        </div>
+        <div class="field">
+          <label for="galleryCaption">Подпись к фотографии</label>
+          <input id="galleryCaption" type="text" placeholder="Например: Наше мероприятие">
+        </div>
+        <button class="primary" onclick="uploadGallery()">Добавить фотографию</button>
+      </div>
+
+      <div class="admin-section">
+        <h3>Фотографии, загруженные администратором</h3>
+        <div id="galleryAdminList" class="admin-list"></div>
       </div>
 
       <div class="admin-section">
         <h3>Добавить новость</h3>
-        <label class="field">Заголовок
-          <input id="newsTitle" type="text" placeholder="Название события">
-        </label>
-        <label class="field">Текст новости
-          <textarea id="newsText" placeholder="Расскажите о мероприятии"></textarea>
-        </label>
-        <button class="btn green" id="addNewsBtn" type="button">Опубликовать новость на этом устройстве</button>
-        <div class="admin-list" id="newsAdminList"></div>
+        <div class="field">
+          <label for="newsTitle">Заголовок</label>
+          <input id="newsTitle" type="text" placeholder="Название новости">
+        </div>
+        <div class="field">
+          <label for="newsText">Текст новости</label>
+          <textarea id="newsText" placeholder="Напишите текст новости..."></textarea>
+        </div>
+        <button class="primary" onclick="addNews()">Опубликовать новость</button>
       </div>
 
       <div class="admin-section">
-        <h3>Резервная копия</h3>
-        <p class="small">Скачайте файл с сохранёнными настройками, чтобы не потерять загруженные материалы.</p>
-        <button class="btn green" id="exportBtn" type="button">Скачать резервную копию</button>
-        <label class="field">Восстановить из JSON-файла
-          <input id="importFile" type="file" accept=".json,application/json">
-        </label>
+        <h3>Управление новостями</h3>
+        <div id="newsAdminList" class="admin-list"></div>
       </div>
 
-      <button class="btn" type="button" onclick="logoutAdmin()">Выйти из панели</button>
+      <div class="admin-section">
+        <h3>Резервная копия новостей</h3>
+        <button class="secondary" onclick="exportNews()">Экспортировать новости</button>
+        <div class="field">
+          <label for="importFile">Восстановить новости из файла JSON</label>
+          <input type="file" id="importFile" accept=".json,application/json">
+        </div>
+        <button class="secondary" onclick="importNews()">Импортировать новости</button>
+      </div>
+
+      <div class="admin-section">
+        <button class="danger" onclick="logout()">Выйти из панели администратора</button>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
-const ADMIN_PASSWORD = "1113";
-const STORAGE_KEY = "healthyFoodSchool_v1";
+/* =========================================================
+   НАСТРОЙКИ САЙТА
+========================================================= */
 
-const starterGallery = [
+const API_URL = "https://script.google.com/macros/s/AKfycbygJts3gJpAVnB312K1pdsL2uYeygGIjzbyTtSs30YT7AUM8KLAFtNNUPJSjPr0NAEY/exec";
+
+const PASSWORD_KEY = "szp_admin_session";
+const STARTER_NEWS = [
   {
-    src: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80",
-    caption: "Разнообразие овощей"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80",
-    caption: "Сбалансированное питание"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1505576399274-565b52d4ac71?auto=format&fit=crop&w=800&q=80",
-    caption: "Свежие фрукты"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80",
-    caption: "Полезные блюда"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=800&q=80",
-    caption: "Полезные продукты"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80",
-    caption: "Еда на каждый день"
+    id:"welcome",
+    title:"Добро пожаловать!",
+    text:"На сайте Школы здорового питания будут публиковаться новости, фотографии и объявления о наших мероприятиях.",
+    date:"2026-11-05"
   }
 ];
 
-const starterNews = [
+const STARTER_GALLERY = [
   {
-    title: "Добро пожаловать!",
-    text: "На сайте вы сможете узнавать о полезных привычках, мероприятиях и новостях школы здорового питания.",
-    date: new Date().toLocaleDateString("ru-RU")
+    url:"https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80",
+    caption:"Полезное и разнообразное питание"
+  },
+  {
+    url:"https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80",
+    caption:"Овощи и фрукты"
+  },
+  {
+    url:"https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=800&q=80",
+    caption:"Здоровые продукты"
+  },
+  {
+    url:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80",
+    caption:"Правильное питание"
+  },
+  {
+    url:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80",
+    caption:"Полезные блюда"
+  },
+  {
+    url:"https://images.unsplash.com/photo-1505576399274-565b52d4ac71?auto=format&fit=crop&w=800&q=80",
+    caption:"Здоровый образ жизни"
   }
 ];
 
-function loadState() {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) return JSON.parse(saved);
-  } catch (e) {
-    console.warn("Не удалось прочитать сохранённые данные", e);
-  }
-  return {
-    logo: "",
-    hero: "",
-    gallery: starterGallery,
-    news: starterNews
-  };
+let cloudPhotos = [];
+let cloudNews = [];
+let cloudLoaded = false;
+let isLoading = false;
+
+/* =========================================================
+   БЕЗОПАСНЫЙ ВЫВОД ТЕКСТА
+========================================================= */
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  }[char]));
 }
 
-let state = loadState();
-
-function saveState() {
+function safeImageURL(value) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    const url = new URL(value, location.href);
+    if (url.protocol === "https:" || url.protocol === "http:") return url.href;
+  } catch(e) {}
+  return "";
+}
+
+function formatDate(value) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return String(value);
+  return date.toLocaleDateString("ru-RU");
+}
+
+/* =========================================================
+   ОТРИСОВКА ГАЛЕРЕИ
+========================================================= */
+
+function renderGallery() {
+  const grid = document.getElementById("galleryGrid");
+  const uploaded = cloudPhotos.filter(p => p.category === "gallery");
+  const items = [...STARTER_GALLERY, ...uploaded];
+
+  grid.innerHTML = items.map(photo => {
+    const url = safeImageURL(photo.url);
+    if (!url) return "";
+    return `
+      <div class="gallery-item">
+        <img src="${escapeHTML(url)}" alt="${escapeHTML(photo.caption || "Фотография")}" loading="lazy">
+        <div class="gallery-caption">${escapeHTML(photo.caption || "")}</div>
+      </div>`;
+  }).join("");
+
+  const adminList = document.getElementById("galleryAdminList");
+  if (adminList) {
+    adminList.innerHTML = uploaded.length ? uploaded.map(photo => `
+      <div class="admin-row">
+        <img src="${escapeHTML(safeImageURL(photo.url))}" alt="">
+        <span>${escapeHTML(photo.caption || photo.name || "Фотография")}</span>
+        <button class="danger" onclick="deletePhoto('${escapeHTML(photo.id)}')">Удалить</button>
+      </div>
+    `).join("") : '<p class="small">Загруженных фотографий пока нет.</p>';
+  }
+}
+
+/* =========================================================
+   ОТРИСОВКА НОВОСТЕЙ
+========================================================= */
+
+function renderNews() {
+  const list = document.getElementById("newsList");
+  const news = cloudNews.length ? cloudNews : STARTER_NEWS;
+
+  list.innerHTML = news.map(item => `
+    <article class="news-item">
+      <div class="news-date">${escapeHTML(formatDate(item.date))}</div>
+      <h3>${escapeHTML(item.title)}</h3>
+      <p>${escapeHTML(item.text)}</p>
+    </article>
+  `).join("");
+
+  const adminList = document.getElementById("newsAdminList");
+  if (adminList) {
+    adminList.innerHTML = cloudNews.length ? cloudNews.map(item => `
+      <div class="admin-row">
+        <div>
+          <strong>${escapeHTML(item.title)}</strong>
+          <div class="small">${escapeHTML(formatDate(item.date))}</div>
+        </div>
+        <button class="danger" onclick="deleteNews('${escapeHTML(item.id)}')">Удалить</button>
+      </div>
+    `).join("") : '<p class="small">Пока нет опубликованных новостей.</p>';
+  }
+}
+
+/* =========================================================
+   ЛОГОТИП И ГЛАВНОЕ ФОТО
+========================================================= */
+
+function applySpecialPhotos() {
+  const logo = cloudPhotos.find(p => p.category === "logo");
+  const hero = cloudPhotos.find(p => p.category === "hero");
+
+  if (logo && logo.url) {
+    document.getElementById("siteLogo").src = safeImageURL(logo.url);
+  }
+
+  if (hero && hero.url) {
+    const url = safeImageURL(hero.url);
+    if (url) {
+      document.querySelector(".hero").style.backgroundImage =
+        `linear-gradient(90deg,rgba(7,48,31,.83),rgba(7,48,31,.25)),url("${url}")`;
+    }
+  }
+}
+
+/* =========================================================
+   ЗАГРУЗКА ОБЩИХ ДАННЫХ ИЗ GOOGLE APPS SCRIPT
+========================================================= */
+
+function loadCloudData() {
+  if (isLoading) return;
+  isLoading = true;
+
+  const callbackName = "szpCallback_" + Date.now() + "_" + Math.floor(Math.random()*10000);
+  const script = document.createElement("script");
+
+  let finished = false;
+
+  const timeout = setTimeout(() => {
+    if (finished) return;
+    finished = true;
+    cleanup();
+    document.getElementById("cloudStatus").textContent =
+      "Не удалось получить данные. Проверьте подключение и публикацию Apps Script.";
+    document.getElementById("cloudStatus").classList.add("error");
+  }, 15000);
+
+  function cleanup() {
+    clearTimeout(timeout);
+    delete window[callbackName];
+    script.remove();
+    isLoading = false;
+  }
+
+  window[callbackName] = function(data) {
+    if (finished) return;
+    finished = true;
+
+    if (data && data.success) {
+      cloudPhotos = Array.isArray(data.photos) ? data.photos : [];
+      cloudNews = Array.isArray(data.news) ? data.news : [];
+      cloudLoaded = true;
+
+      renderGallery();
+      renderNews();
+      applySpecialPhotos();
+
+      const status = document.getElementById("cloudStatus");
+      if (status) {
+        status.textContent = "Облачное хранилище подключено. Данные загружены.";
+        status.classList.remove("error");
+      }
+    } else {
+      const status = document.getElementById("cloudStatus");
+      if (status) {
+        status.textContent = "Сервер ответил с ошибкой. Проверьте код Apps Script.";
+        status.classList.add("error");
+      }
+    }
+
+    cleanup();
+  };
+
+  script.onerror = function() {
+    if (finished) return;
+    finished = true;
+    cleanup();
+    document.getElementById("cloudStatus").textContent =
+      "Ошибка загрузки данных с сервера.";
+    document.getElementById("cloudStatus").classList.add("error");
+  };
+
+  script.src = API_URL + "?callback=" + encodeURIComponent(callbackName) + "&t=" + Date.now();
+  document.body.appendChild(script);
+}
+
+/* =========================================================
+   ОТПРАВКА ДАННЫХ НА СЕРВЕР
+========================================================= */
+
+async function sendToCloud(data) {
+  const password = sessionStorage.getItem(PASSWORD_KEY);
+
+  if (!password) {
+    alert("Сначала войдите в панель администратора.");
+    return false;
+  }
+
+  try {
+    await fetch(API_URL, {
+      method:"POST",
+      mode:"no-cors",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify({...data, password})
+    });
+
+    showStatus("Запрос отправлен. Проверяем сохранение...");
+    await new Promise(resolve => setTimeout(resolve, 2500));
+
+    isLoading = false;
+    loadCloudData();
+
     return true;
-  } catch (e) {
-    alert("Не удалось сохранить данные. Возможно, фотографии занимают слишком много места. Попробуйте загрузить изображение меньшего размера.");
+  } catch(error) {
+    showStatus("Не удалось отправить данные. Проверьте интернет.", true);
     return false;
   }
 }
 
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  })[char]);
+function showStatus(message, error=false) {
+  const status = document.getElementById("cloudStatus");
+  if (!status) return;
+  status.textContent = message;
+  status.classList.toggle("error", error);
 }
 
-function renderLogo() {
-  const box = document.getElementById("logoBox");
-  box.innerHTML = state.logo
-    ? `<img src="${state.logo}" alt="Логотип школы">`
-    : "🥗";
+/* =========================================================
+   РАБОТА С ИЗОБРАЖЕНИЯМИ
+========================================================= */
+
+function compressImage(file) {
+  return new Promise((resolve, reject) => {
+    if (!file || !file.type.startsWith("image/")) {
+      reject(new Error("Выберите файл изображения."));
+      return;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      reject(new Error("Размер файла не должен превышать 10 МБ."));
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onerror = () => reject(new Error("Не удалось прочитать файл."));
+
+    reader.onload = () => {
+      const image = new Image();
+
+      image.onerror = () => reject(new Error("Файл изображения повреждён."));
+
+      image.onload = () => {
+        const maxSide = 1400;
+        let width = image.width;
+        let height = image.height;
+
+        if (width > maxSide || height > maxSide) {
+          const ratio = Math.min(maxSide / width, maxSide / height);
+          width = Math.round(width * ratio);
+          height = Math.round(height * ratio);
+        }
+
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(image, 0, 0, width, height);
+
+        resolve(canvas.toDataURL("image/jpeg", 0.82));
+      };
+
+      image.src = reader.result;
+    };
+
+    reader.readAsDataURL(file);
+  });
 }
 
-function renderHero() {
-  const img = document.querySelector(".hero-image");
-  if (img && state.hero) img.src = state.hero;
+async function uploadSpecial(category) {
+  const input = document.getElementById(category === "logo" ? "logoUpload" : "heroUpload");
+  const file = input.files[0];
+
+  if (!file) {
+    alert("Сначала выберите изображение.");
+    return;
+  }
+
+  try {
+    showStatus("Подготавливаем изображение...");
+    const image = await compressImage(file);
+
+    await sendToCloud({
+      action:"upload",
+      image,
+      name:file.name,
+      category,
+      caption:category === "logo" ? "Логотип сайта" : "Главное фото сайта"
+    });
+
+    input.value = "";
+  } catch(error) {
+    alert(error.message);
+  }
 }
 
-function renderGallery() {
-  const grid = document.getElementById("galleryGrid");
-  grid.innerHTML = state.gallery.map((item, index) => `
-    <div class="gallery-item">
-      <img src="${item.src}" alt="${escapeHTML(item.caption || "Фото школы")}" loading="lazy">
-      <div class="caption">${escapeHTML(item.caption || "Школа здорового питания")}</div>
-    </div>
-  `).join("");
+async function uploadGallery() {
+  const input = document.getElementById("galleryUpload");
+  const file = input.files[0];
+  const caption = document.getElementById("galleryCaption").value.trim();
+
+  if (!file) {
+    alert("Выберите фотографию.");
+    return;
+  }
+
+  try {
+    showStatus("Подготавливаем фотографию...");
+    const image = await compressImage(file);
+
+    await sendToCloud({
+      action:"upload",
+      image,
+      name:file.name,
+      category:"gallery",
+      caption:caption || file.name
+    });
+
+    input.value = "";
+    document.getElementById("galleryCaption").value = "";
+  } catch(error) {
+    alert(error.message);
+  }
 }
 
-function renderNews() {
-  const list = document.getElementById("newsList");
-  list.innerHTML = state.news.length
-    ? state.news.map(item => `
-      <article class="news-item">
-        <time>${escapeHTML(item.date || "")}</time>
-        <h3>${escapeHTML(item.title)}</h3>
-        <p>${escapeHTML(item.text)}</p>
-      </article>
-    `).join("")
-    : '<div class="news-item">Пока новостей нет.</div>';
+/* =========================================================
+   УДАЛЕНИЕ ФОТОГРАФИЙ
+========================================================= */
+
+async function deletePhoto(id) {
+  if (!confirm("Удалить эту фотографию из общей галереи?")) return;
+
+  await sendToCloud({
+    action:"delete",
+    id
+  });
 }
 
-function renderAdminLists() {
-  document.getElementById("galleryAdminList").innerHTML =
-    state.gallery.map((item, i) => `
-      <div class="admin-row">
-        <span>${escapeHTML(item.caption || "Фотография " + (i + 1))}</span>
-        <button class="delete" type="button" data-delete-photo="${i}">Удалить</button>
-      </div>
-    `).join("");
+/* =========================================================
+   ДОБАВЛЕНИЕ И УДАЛЕНИЕ НОВОСТЕЙ
+========================================================= */
 
-  document.getElementById("newsAdminList").innerHTML =
-    state.news.map((item, i) => `
-      <div class="admin-row">
-        <span>${escapeHTML(item.title)}</span>
-        <button class="delete" type="button" data-delete-news="${i}">Удалить</button>
-      </div>
-    `).join("");
+async function addNews() {
+  const title = document.getElementById("newsTitle").value.trim();
+  const text = document.getElementById("newsText").value.trim();
+
+  if (!title || !text) {
+    alert("Заполните заголовок и текст новости.");
+    return;
+  }
+
+  const newItem = {
+    id:"news_" + Date.now(),
+    title,
+    text,
+    date:new Date().toISOString()
+  };
+
+  const updated = [...cloudNews, newItem];
+
+  const sent = await sendToCloud({
+    action:"saveNews",
+    news:updated
+  });
+
+  if (sent) {
+    document.getElementById("newsTitle").value = "";
+    document.getElementById("newsText").value = "";
+  }
 }
 
-function renderAll() {
-  renderLogo();
-  renderHero();
-  renderGallery();
-  renderNews();
-  renderAdminLists();
+async function deleteNews(id) {
+  if (!confirm("Удалить эту новость?")) return;
+
+  const updated = cloudNews.filter(item => String(item.id) !== String(id));
+
+  await sendToCloud({
+    action:"saveNews",
+    news:updated
+  });
 }
+
+/* =========================================================
+   РЕЗЕРВНОЕ КОПИРОВАНИЕ НОВОСТЕЙ
+========================================================= */
+
+function exportNews() {
+  const backup = {
+    type:"szp-news-backup",
+    version:1,
+    exportedAt:new Date().toISOString(),
+    news:cloudNews
+  };
+
+  const blob = new Blob([JSON.stringify(backup,null,2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "shkola-zdorovogo-pitaniya-news.json";
+  link.click();
+
+  URL.revokeObjectURL(url);
+}
+
+async function importNews() {
+  const input = document.getElementById("importFile");
+  const file = input.files[0];
+
+  if (!file) {
+    alert("Выберите JSON-файл.");
+    return;
+  }
+
+  try {
+    const backup = JSON.parse(await file.text());
+
+    if (!Array.isArray(backup.news)) {
+      alert("В файле не найден список новостей.");
+      return;
+    }
+
+    if (!confirm("Импортировать новости? Текущий список новостей будет заменён.")) return;
+
+    await sendToCloud({
+      action:"saveNews",
+      news:backup.news
+    });
+
+    input.value = "";
+  } catch(error) {
+    alert("Не удалось прочитать файл. Проверьте формат JSON.");
+  }
+}
+
+/* =========================================================
+   ВХОД И ВЫХОД АДМИНИСТРАТОРА
+========================================================= */
 
 function openAdmin() {
   document.getElementById("adminModal").classList.add("show");
-  document.getElementById("loginPanel").style.display =
-    sessionStorage.getItem("healthyFoodAdmin") === "yes" ? "none" : "block";
-  document.getElementById("adminPanel").classList.toggle(
-    "active", sessionStorage.getItem("healthyFoodAdmin") === "yes"
-  );
-  document.getElementById("adminPassword").value = "";
-  document.getElementById("loginError").textContent = "";
+
+  const password = sessionStorage.getItem(PASSWORD_KEY);
+
+  if (password) {
+    showAdminPanel();
+    isLoading = false;
+    loadCloudData();
+  } else {
+    document.getElementById("loginBlock").classList.remove("hidden");
+    document.getElementById("adminPanel").classList.add("hidden");
+  }
 }
 
 function closeAdmin() {
   document.getElementById("adminModal").classList.remove("show");
 }
 
-function logoutAdmin() {
-  sessionStorage.removeItem("healthyFoodAdmin");
+function showAdminPanel() {
+  document.getElementById("loginBlock").classList.add("hidden");
+  document.getElementById("adminPanel").classList.remove("hidden");
+}
+
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const password = document.getElementById("adminPassword").value.trim();
+
+  if (!password) return;
+
+  sessionStorage.setItem(PASSWORD_KEY, password);
+  document.getElementById("adminPassword").value = "";
+  document.getElementById("loginError").classList.add("hidden");
+
+  showAdminPanel();
+  showStatus("Пароль введён. Проверка доступа произойдёт при первом сохранении.");
+  isLoading = false;
+  loadCloudData();
+});
+
+function logout() {
+  sessionStorage.removeItem(PASSWORD_KEY);
+  document.getElementById("adminPanel").classList.add("hidden");
+  document.getElementById("loginBlock").classList.remove("hidden");
+  document.getElementById("loginError").classList.add("hidden");
   closeAdmin();
 }
 
-document.getElementById("loginForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  const password = document.getElementById("adminPassword").value;
-  if (password === ADMIN_PASSWORD) {
-    sessionStorage.setItem("healthyFoodAdmin", "yes");
-    document.getElementById("loginPanel").style.display = "none";
-    document.getElementById("adminPanel").classList.add("active");
-    renderAdminLists();
-  } else {
-    document.getElementById("loginError").textContent = "Неверный пароль. Попробуйте ещё раз.";
-  }
+/* Закрытие окна по нажатию на фон */
+document.getElementById("adminModal").addEventListener("click", function(event) {
+  if (event.target === this) closeAdmin();
 });
 
-document.getElementById("adminModal").addEventListener("click", function(e) {
-  if (e.target === this) closeAdmin();
-});
+/* =========================================================
+   ЗАПУСК САЙТА
+========================================================= */
 
-document.addEventListener("keydown", function(e) {
-  if (e.key === "Escape") closeAdmin();
-});
+renderGallery();
+renderNews();
+loadCloudData();
 
-function compressImage(file) {
-  return new Promise((resolve, reject) => {
-    if (!file.type.startsWith("image/")) {
-      reject(new Error("Выберите файл изображения."));
-      return;
-    }
-    const reader = new FileReader();
-    reader.onerror = () => reject(new Error("Не удалось прочитать файл."));
-    reader.onload = () => {
-      const img = new Image();
-      img.onerror = () => reject(new Error("Не удалось открыть изображение."));
-      img.onload = () => {
-        const maxSide = 1200;
-        const scale = Math.min(1, maxSide / Math.max(img.width, img.height));
-        const canvas = document.createElement("canvas");
-        canvas.width = Math.max(1, Math.round(img.width * scale));
-        canvas.height = Math.max(1, Math.round(img.height * scale));
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        resolve(canvas.toDataURL("image/jpeg", 0.78));
-      };
-      img.src = reader.result;
-    };
-    reader.readAsDataURL(file);
-  });
-}
-
-document.getElementById("logoUpload").addEventListener("change", async function() {
-  const file = this.files[0];
-  if (!file) return;
-  try {
-    state.logo = await compressImage(file);
-    if (saveState()) renderLogo();
-  } catch (e) {
-    alert(e.message);
-  }
-  this.value = "";
-});
-
-document.getElementById("heroUpload").addEventListener("change", async function() {
-  const file = this.files[0];
-  if (!file) return;
-  try {
-    state.hero = await compressImage(file);
-    if (saveState()) renderHero();
-  } catch (e) {
-    alert(e.message);
-  }
-  this.value = "";
-});
-
-document.getElementById("galleryUpload").addEventListener("change", async function() {
-  const files = Array.from(this.files || []);
-  if (!files.length) return;
-  const caption = document.getElementById("galleryCaption").value.trim();
-  try {
-    for (let i = 0; i < files.length; i++) {
-      const src = await compressImage(files[i]);
-      state.gallery.push({
-        src,
-        caption: caption || files[i].name.replace(/\.[^.]+$/, "")
-      });
-    }
-    if (saveState()) {
-      renderGallery();
-      renderAdminLists();
-      document.getElementById("galleryCaption").value = "";
-      alert("Фотографии добавлены в этом браузере.");
-    }
-  } catch (e) {
-    alert(e.message);
-  }
-  this.value = "";
-});
-
-document.getElementById("galleryAdminList").addEventListener("click", function(e) {
-  const button = e.target.closest("[data-delete-photo]");
-  if (!button) return;
-  const index = Number(button.dataset.deletePhoto);
-  if (!confirm("Удалить эту фотографию?")) return;
-  state.gallery.splice(index, 1);
-  if (saveState()) {
-    renderGallery();
-    renderAdminLists();
-  }
-});
-
-document.getElementById("addNewsBtn").addEventListener("click", function() {
-  const title = document.getElementById("newsTitle").value.trim();
-  const text = document.getElementById("newsText").value.trim();
-  if (!title || !text) {
-    alert("Заполните заголовок и текст новости.");
-    return;
-  }
-  state.news.unshift({
-    title,
-    text,
-    date: new Date().toLocaleDateString("ru-RU")
-  });
-  if (saveState()) {
-    renderNews();
-    renderAdminLists();
-    document.getElementById("newsTitle").value = "";
-    document.getElementById("newsText").value = "";
-  }
-});
-
-document.getElementById("newsAdminList").addEventListener("click", function(e) {
-  const button = e.target.closest("[data-delete-news]");
-  if (!button) return;
-  const index = Number(button.dataset.deleteNews);
-  if (!confirm("Удалить эту новость?")) return;
-  state.news.splice(index, 1);
-  if (saveState()) {
-    renderNews();
-    renderAdminLists();
-  }
-});
-
-document.getElementById("exportBtn").addEventListener("click", function() {
-  const blob = new Blob([JSON.stringify(state, null, 2)], {
-    type: "application/json"
-  });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "healthy-food-school-backup.json";
-  a.click();
-  URL.revokeObjectURL(url);
-});
-
-document.getElementById("importFile").addEventListener("change", async function() {
-  const file = this.files[0];
-  if (!file) return;
-  try {
-    const imported = JSON.parse(await file.text());
-    if (!Array.isArray(imported.gallery) || !Array.isArray(imported.news)) {
-      throw new Error("Файл не похож на резервную копию этого сайта.");
-    }
-    if (!confirm("Заменить текущие данные данными из файла?")) return;
-    state = {
-      logo: typeof imported.logo === "string" ? imported.logo : "",
-      hero: typeof imported.hero === "string" ? imported.hero : "",
-      gallery: imported.gallery,
-      news: imported.news
-    };
-    if (saveState()) {
-      renderAll();
-      alert("Данные восстановлены в этом браузере.");
-    }
-  } catch (e) {
-    alert("Не удалось импортировать файл: " + e.message);
-  }
-  this.value = "";
-});
-
-document.getElementById("year").textContent = new Date().getFullYear();
-renderAll();
 </script>
 </body>
 </html>
